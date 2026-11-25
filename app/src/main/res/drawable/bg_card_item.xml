@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://android.com"
+<shape xmlns:android="http&#58;//://android.com"
     android:shape="rectangle">
     <solid android:color="@color/mocha_card" />
     <corners android:radius="20dp" />
