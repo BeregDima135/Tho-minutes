@@ -13,6 +13,19 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Fix XML namespaces automatically
+      run: |
+        python3 -c '
+        import glob, re
+        url = "http://" + "schemas." + "://android.com"
+        for path in glob.glob("app/src/main/**/*.xml", recursive=True):
+            with open(path, "r") as f:
+                text = f.read()
+            text = re.sub(r"xmlns:android=\"[^\"]*\"", f"xmlns:android=\"{url}\"", text)
+            with open(path, "w") as f:
+                f.write(text)
+        '
+
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
