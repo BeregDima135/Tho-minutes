@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http&#58;//://android.com">
+<h t t p : / / s c h e m a s . a n d r o i d . c o m / a p k / r e s / a n d r o i d
 
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
 
