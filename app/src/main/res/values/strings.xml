@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Подумай 2 минуты</string>
+    <string name="service_description">Отслеживает открытие выбранных вами приложений, чтобы дать 2 минуты на осознанное решение.</string>
+</resources>
+
