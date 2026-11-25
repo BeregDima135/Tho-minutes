@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="espresso_bg">#1C1613</color>
+    <color name="mocha_card">#2A211C</color>
+    <color name="latte_cream">#F5EFE6</color>
+    <color name="cappuccino_muted">#B0A295</color>
+    <color name="caramel_accent">#C88A55</color>
+    <color name="cocoa_border">#453830</color>
+</resources>
