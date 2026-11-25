@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.ThoMinutes" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/caramel_accent</item>
+        <item name="colorPrimaryVariant">@color/espresso_bg</item>
+        <item name="colorOnPrimary">@color/espresso_bg</item>
+        <item name="android:windowBackground">@color/espresso_bg</item>
+        <item name="android:statusBarColor">@color/espresso_bg</item>
+        <item name="android:navigationBarColor">@color/espresso_bg</item>
+    </style>
+</resources>
