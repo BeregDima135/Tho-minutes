@@ -16,12 +16,12 @@ jobs:
     - name: Fix XML namespaces automatically
       run: |
         python3 -c '
-        import glob, re
-        url = "http://" + "schemas." + "://android.com"
+        import glob
+        url = "http" + "://" + "schemas." + "android.com" + "/apk/res/android"
         for path in glob.glob("app/src/main/**/*.xml", recursive=True):
             with open(path, "r") as f:
                 text = f.read()
-            text = re.sub(r"xmlns:android=\"[^\"]*\"", f"xmlns:android=\"{url}\"", text)
+            text = text.replace("PLACEHOLDER", url)
             with open(path, "w") as f:
                 f.write(text)
         '
