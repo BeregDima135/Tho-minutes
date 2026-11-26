@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.text.TextUtils
@@ -39,7 +40,15 @@ class MainActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.appsRecyclerView)
 
         btnEnableService.setOnClickListener {
-            startActivity(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS))
+            if (!Settings.canDrawOverlays(this)) {
+                val intent = Intent(
+                    Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                    Uri.parse("package:$packageName")
+                )
+                startActivity(intent)
+            } else {
+                startActivity(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS))
+            }
         }
 
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -52,12 +61,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateServiceStatus() {
-        if (isAccessibilityServiceEnabled()) {
-            statusText.text = "Защита активна ✓"
-            btnEnableService.text = "Настройки службы"
-        } else {
-            statusText.text = "Служба отслеживания выключена"
-            btnEnableService.text = "Включить в настройках"
+        val hasOverlay = Settings.canDrawOverlays(this)
+        val hasAccessibility = isAccessibilityServiceEnabled()
+
+        when {
+            !hasOverlay -> {
+                statusText.text = "Шаг 1: Разрешите показ поверх окон"
+                btnEnableService.text = "Разрешить поверх окон"
+            }
+            !hasAccessibility -> {
+                statusText.text = "Шаг 2: Включите службу отслеживания"
+                btnEnableService.text = "Включить в настройках"
+            }
+            else -> {
+                statusText.text = "Защита активна ✓"
+                btnEnableService.text = "Настройки службы"
+            }
         }
     }
 
